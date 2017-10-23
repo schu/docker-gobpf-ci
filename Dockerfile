@@ -1,7 +1,12 @@
-FROM fedora:25
+FROM fedora:26
 
-RUN bash -c "echo -e '[iovisor]\nbaseurl=https://repo.iovisor.org/yum/main/f25/\$basearch\nenabled=1\ngpgcheck=0' >> /etc/yum.repos.d/iovisor.repo"
-RUN dnf -y install golang bcc-tools
+RUN dnf -y install bison clang clang-devel cmake elfutils-libelf-devel ethtool \
+flex gcc-c++ git golang iperf libstdc++-static llvm llvm-devel llvm-static \
+make ncurses-devel python-netaddr python-pip zlib-devel
+RUN cd / && git clone https://github.com/iovisor/bcc && \
+cd /bcc && git checkout v0.4.0 && mkdir build && \
+cd /bcc/build && cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && \
+make install
 RUN mkdir -p /go
 
 ENV GOPATH /go
