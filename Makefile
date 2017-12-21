@@ -4,4 +4,4 @@
 all: build
 
 build:
-	docker build -t schu/gobpf-ci .
+	docker build --no-cache -t schu/gobpf-ci .
