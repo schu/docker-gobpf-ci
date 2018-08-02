@@ -1,7 +1,8 @@
+GIT_COMMIT=$(shell git rev-parse HEAD)
 
-.phony: all build
-
+.PHONY: all
 all: build
 
+.PHONY: build
 build:
-	docker build --no-cache -t schu/gobpf-ci .
+	docker build --no-cache -t schu/gobpf-ci:$(GIT_COMMIT) .
