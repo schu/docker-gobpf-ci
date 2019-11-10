@@ -1,4 +1,4 @@
-FROM fedora:29
+FROM fedora:30
 
 RUN dnf -y install \
 	bison \
@@ -24,7 +24,7 @@ RUN dnf -y install \
 RUN cd / && \
 	git clone https://github.com/iovisor/bcc && \
 	cd /bcc && \
-	git checkout v0.9.0 && \
+	git checkout v0.11.0 && \
 	git submodule update --init --recursive && \
 	mkdir build && \
 	cd /bcc/build && \
