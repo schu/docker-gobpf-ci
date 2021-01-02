@@ -1,4 +1,4 @@
-FROM fedora:30
+FROM fedora:33
 
 RUN dnf -y install \
 	bison \
@@ -17,6 +17,7 @@ RUN dnf -y install \
 	llvm-static \
 	make \
 	ncurses-devel \
+	python \
 	python-netaddr \
 	python-pip \
 	zlib-devel
@@ -24,7 +25,7 @@ RUN dnf -y install \
 RUN cd / && \
 	git clone https://github.com/iovisor/bcc && \
 	cd /bcc && \
-	git checkout v0.11.0 && \
+	git checkout v0.17.0 && \
 	git submodule update --init --recursive && \
 	mkdir build && \
 	cd /bcc/build && \
