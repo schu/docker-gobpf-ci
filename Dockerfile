@@ -25,7 +25,7 @@ RUN dnf -y install \
 RUN cd / && \
 	git clone https://github.com/iovisor/bcc && \
 	cd /bcc && \
-	git checkout v0.17.0 && \
+	git checkout v0.18.0 && \
 	git submodule update --init --recursive && \
 	mkdir build && \
 	cd /bcc/build && \
